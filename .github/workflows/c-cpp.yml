@@ -1,0 +1,27 @@
+name: Compile - Debian/Ubuntu
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: install build essentials
+      run: sudo apt-get install -y build-essential libz-dev libclucene-dev libicu-dev libcurl4-gnutls-dev
+    - name: autogen
+      run: ./autogen.sh
+    - name: usrinst
+      run: ./usrinst.sh --enable-shared
+    - name: make
+      run: make
+    - name: make install
+      run: sudo make install
+    - name: make install_config
+      run: sudo make install_config
