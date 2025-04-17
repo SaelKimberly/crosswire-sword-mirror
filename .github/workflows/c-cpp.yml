@@ -2,9 +2,9 @@ name: Compile - Debian/Ubuntu
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "trunk" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "trunk" ]
 
 jobs:
   build:
